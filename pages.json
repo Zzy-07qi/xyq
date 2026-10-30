@@ -1,0 +1,166 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^x-(.*)": "@/components/x-$1/x-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/parent/onboarding",
+      "style": {
+        "navigationBarTitleText": "星语",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/parent/consent",
+      "style": {
+        "navigationBarTitleText": "知情同意与数据使用"
+      }
+    },
+    {
+      "path": "pages/parent/profile",
+      "style": {
+        "navigationBarTitleText": "孩子的小档案"
+      }
+    },
+    {
+      "path": "pages/parent/permission-test",
+      "style": {
+        "navigationBarTitleText": "设备检查"
+      }
+    },
+    {
+      "path": "pages/parent/permission-guide",
+      "style": {
+        "navigationBarTitleText": "如何开启麦克风"
+      }
+    },
+    {
+      "path": "pages/parent/notice",
+      "style": {
+        "navigationBarTitleText": "陪练须知"
+      }
+    },
+    {
+      "path": "pages/parent/home",
+      "style": {
+        "navigationBarTitleText": "家长中心",
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/parent/coaching",
+      "style": {
+        "navigationBarTitleText": "陪练中",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/parent/task-cards",
+      "style": {
+        "navigationBarTitleText": "家庭任务卡"
+      }
+    },
+    {
+      "path": "pages/parent/task-feedback",
+      "style": {
+        "navigationBarTitleText": "回填完成情况"
+      }
+    },
+    {
+      "path": "pages/parent/session-detail",
+      "style": {
+        "navigationBarTitleText": "这次训练"
+      }
+    },
+    {
+      "path": "pages/parent/privacy",
+      "style": {
+        "navigationBarTitleText": "隐私与授权"
+      }
+    },
+    // #ifdef H5
+    {
+      "path": "pages/auth/login",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "navigationStyle": "custom"
+      }
+    },
+    // #endif
+    {
+      "path": "pages/child/home",
+      "style": {
+        "navigationBarTitleText": "开始吧",
+        "navigationStyle": "custom",
+        "backgroundColor": "#eef5fe"
+      }
+    },
+    {
+      "path": "pages/child/scenario-select",
+      "style": {
+        "navigationBarTitleText": "选一个场景",
+        "navigationStyle": "custom",
+        "backgroundColor": "#eef5fe"
+      }
+    },
+    {
+      "path": "pages/child/scenario-intro",
+      "style": {
+        "navigationBarTitleText": "先看一看",
+        "navigationStyle": "custom",
+        "backgroundColor": "#eef5fe"
+      }
+    },
+    {
+      "path": "pages/child/training",
+      "style": {
+        "navigationBarTitleText": "练习中",
+        "navigationStyle": "custom",
+        "backgroundColor": "#eef5fe",
+        "disableScroll": false
+      }
+    },
+    {
+      "path": "pages/child/reward",
+      "style": {
+        "navigationBarTitleText": "完成啦",
+        "navigationStyle": "custom",
+        "backgroundColor": "#eef5fe"
+      }
+    },
+    {
+      "path": "pages/child/exit",
+      "style": {
+        "navigationBarTitleText": "今天就到这里",
+        "navigationStyle": "custom",
+        "backgroundColor": "#eef5fe"
+      }
+    },
+    {
+      "path": "pages/child/safety",
+      "style": {
+        "navigationBarTitleText": "请家长来帮忙",
+        "navigationStyle": "custom",
+        "backgroundColor": "#f7e9e5"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "星语",
+    "navigationBarBackgroundColor": "#F4F8FD",
+    "backgroundColor": "#F4F8FD",
+    "backgroundColorTop": "#F4F8FD",
+    "backgroundColorBottom": "#F4F8FD",
+    "app-plus": {
+      "background": "#F4F8FD"
+    },
+    "maxWidth": 480,
+    "rpxCalcMaxDeviceWidth": 480,
+    "rpxCalcBaseDeviceWidth": 480
+  }
+}

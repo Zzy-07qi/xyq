@@ -1,0 +1,28 @@
+# 网页版同源部署：同一个域名下，/api/* 给后端，其余给前端静态文件。
+# 后端没有开 CORS，网页和接口必须同源，所以不能把网页单独放到别的域名。
+#
+# 用法：替换后端仓库里的 Caddyfile，并在 docker-compose.yml 的 caddy 服务下挂载前端产物：
+#     volumes:
+#       - ./Caddyfile:/etc/caddy/Caddyfile:ro
+#       - ./web:/srv/web:ro          # 把前端 dist/build/h5 里的文件放到这里
+#
+# DOMAIN 留空时退化为 HTTP :80（和原来一样）。
+
+{$DOMAIN} {
+	encode gzip
+
+	handle /api/* {
+		reverse_proxy app:8080
+	}
+
+	handle /health {
+		reverse_proxy app:8080
+	}
+
+	handle {
+		root * /srv/web
+		# 路由是 hash 模式，所有页面都从 index.html 进；这行兜底防止直接访问子路径 404
+		try_files {path} /index.html
+		file_server
+	}
+}

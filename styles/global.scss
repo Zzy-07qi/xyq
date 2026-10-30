@@ -1,0 +1,298 @@
+/* ============================================================
+ * 全局样式：基础重置 + 通用原子类 + 全局约束
+ * ============================================================ */
+@import './variables.scss';
+
+page {
+  background-color: $c-page;
+  color: $c-text;
+  font-size: $fs-body;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue',
+    'Microsoft YaHei', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+view,
+text,
+button,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+/* button 重置：小程序自带样式与设计稿冲突 */
+button {
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  background: transparent;
+  border-radius: 0;
+
+  &::after {
+    border: none;
+  }
+}
+
+/* ---------- 布局原子类 ---------- */
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* ---------- 页面容器 ---------- */
+.page {
+  min-height: 100vh;
+  padding: 0 $sp-4 calc(#{$sp-6} + env(safe-area-inset-bottom));
+}
+
+.page--child {
+  background: linear-gradient(180deg, $c-primary-mist 0%, #ffffff 320rpx);
+}
+
+.page--parent {
+  background: $c-page;
+}
+
+/* ---------- 卡片 ---------- */
+.card {
+  background: $c-card;
+  border-radius: $r-lg;
+  padding: $sp-4;
+  box-shadow: $sh-card;
+}
+
+.card + .card {
+  margin-top: $sp-3;
+}
+
+/* ---------- 文字层级 ---------- */
+.t-h1 {
+  font-size: $fs-h1;
+  font-weight: 600;
+  color: $c-primary-deep;
+  line-height: 1.35;
+}
+
+.t-h2 {
+  font-size: $fs-h2;
+  font-weight: 600;
+  color: $c-text;
+  line-height: 1.4;
+}
+
+.t-h3 {
+  font-size: $fs-h3;
+  font-weight: 600;
+  color: $c-text;
+}
+
+.t-body {
+  font-size: $fs-body;
+  color: $c-text;
+}
+
+.t-sub {
+  font-size: $fs-sub;
+  color: $c-text-sub;
+}
+
+.t-cap {
+  font-size: $fs-cap;
+  color: $c-text-weak;
+}
+
+.t-child {
+  font-size: $fs-child;
+  color: $c-text;
+  line-height: 1.7;
+}
+
+/* ---------- 按钮 ---------- */
+.btn {
+  height: $tap-min;
+  padding: 0 $sp-5;
+  border-radius: $r-pill;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $fs-body;
+  font-weight: 500;
+  transition: opacity $t-fast $ease-soft, transform $t-fast $ease-soft;
+
+  &:active {
+    opacity: 0.86;
+    transform: scale(0.98);
+  }
+}
+
+.btn--primary {
+  background: $c-primary;
+  color: #fff;
+  box-shadow: 0 8rpx 24rpx rgba(61, 126, 219, 0.28);
+}
+
+.btn--ghost {
+  background: #fff;
+  color: $c-primary;
+  border: 2rpx solid $c-primary-soft;
+}
+
+.btn--plain {
+  background: transparent;
+  color: $c-text-sub;
+}
+
+.btn--child {
+  height: $tap-child;
+  font-size: $fs-child;
+  font-weight: 600;
+  border-radius: $r-xl;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ---------- 表单 ---------- */
+.field {
+  padding: $sp-3 0;
+
+  & + .field {
+    border-top: 2rpx solid $c-line;
+  }
+}
+
+.field__label {
+  font-size: $fs-body;
+  font-weight: 500;
+  color: $c-text;
+  margin-bottom: $sp-2;
+}
+
+.field__hint {
+  font-size: $fs-cap;
+  color: $c-text-weak;
+  margin-top: $sp-1;
+  line-height: 1.5;
+}
+
+/* ---------- 标签 / 胶囊 ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 52rpx;
+  padding: 0 $sp-3;
+  border-radius: $r-pill;
+  font-size: $fs-cap;
+  background: $c-primary-soft;
+  color: $c-primary-deep;
+}
+
+.tag--leaf {
+  background: $c-leaf-soft;
+  color: $c-leaf-deep;
+}
+
+.tag--sun {
+  background: $c-sun-soft;
+  color: #b8860b;
+}
+
+.tag--safe {
+  background: $c-safe-soft;
+  color: #3f8f6d;
+}
+
+/* ---------- 分割线 ---------- */
+.divider {
+  height: 2rpx;
+  background: $c-line;
+  margin: $sp-3 0;
+}
+
+/* ---------- 安全区 ---------- */
+.safe-bottom {
+  padding-bottom: calc(#{$sp-4} + env(safe-area-inset-bottom));
+}
+
+/* ============================================================
+ * 全局文案约束（对应项目书 3.4）
+ * 任何界面不得显示"错误""失败""答错"等负面标签。
+ * 以下类为"中性提示"，样式刻意避开告警红。
+ * ============================================================ */
+.notice {
+  padding: $sp-3;
+  border-radius: $r-md;
+  font-size: $fs-sub;
+  line-height: 1.6;
+  background: $c-primary-mist;
+  color: $c-text-sub;
+}
+
+.notice--warn {
+  background: $c-warn-soft;
+  color: #96682a;
+}
+
+.notice--safe {
+  background: $c-safe-soft;
+  color: #3f8f6d;
+}
+
+/* ---------- 淡入动画（统一慢速） ---------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-fade-up {
+  animation: fade-up $t-slow $ease-soft both;
+}
+
+/* 呼吸动画：用于等待/倾听态，慢速低刺激 */
+@keyframes breath {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
